@@ -1,0 +1,8 @@
+@startuml
+(*)  --> "在AECP上建表（领域模型）t1"
+--> "部署发布到 IDB 日常 MySQL"
+--> "部署发布到 IDB 线上 MySQL"
+--> "在 MaxCompute 上手写 DDL 语句建表t2"
+--> "配置 t2 -> t1 数据回流任务"
+-->(*)
+@enduml

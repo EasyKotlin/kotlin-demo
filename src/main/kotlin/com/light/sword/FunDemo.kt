@@ -1,8 +1,49 @@
 package com.light.sword
 
+class FPDemo {
+    fun incr(x: Int): Int {
+        return x + 1
+    }
+}
+
+class NotFPDemo {
+    val x = 0
+    fun incr() {
+        x + 1
+    }
+}
 
 fun main() {
     val numbers = listOf(1, 2, 3, 4, 5, 6, 7)
+    run {
+        val sum = numbers.reduce { acc, it -> it * it + acc }
+        println(sum) // 140
+    }
+
+    run {
+        var sum = 0
+        for (i in numbers) {
+            sum += i * i
+        }
+        println(sum) // 140
+    }
+
+    run {
+        val sqrs = numbers.map {
+            it * it
+        }
+        println(sqrs) // [1, 4, 9, 16, 25, 36, 49]
+    }
+
+    run {
+        val sqrs = mutableListOf<Int>()
+        for (i in numbers) {
+            sqrs.add(i * i)
+        }
+        println(sqrs) // [1, 4, 9, 16, 25, 36, 49]
+    }
+
+
 // 引用一个函数
     val evens = numbers.pick(::isEven)
 // 直接使用一个函数变量
@@ -22,7 +63,6 @@ fun main() {
     println("numbers1:$numbers1")
     println("numbers2:$numbers2")
     println("numbers3:$numbers3")
-
 
 }
 

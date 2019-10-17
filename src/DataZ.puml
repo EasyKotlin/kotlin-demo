@@ -1,0 +1,78 @@
+@startuml
+class Space{
+   id
+   name
+   members
+   gmtCreate
+   gmtModified
+}
+
+class DataSource{
+    id
+    name
+    type
+    accessId
+    accessKey
+    jdbcUrl
+    username
+    password
+    gmtCreate
+    gmtModified
+    spaceId
+}
+
+class BackflowConfig{
+    id
+    name
+    sourceTable
+    sourceColumns
+    targetTable
+    targetColumns
+    reader
+    writer
+    transformer
+    jobConfigJson
+    state
+    version
+    gmtCreate
+    gmtModified
+    dataSourceId
+}
+
+
+class RunInstance{
+    id
+    taskId
+    enqueueTime
+    startRunTime
+    executeTime
+    state
+    gmtCreate
+    gmtModified
+}
+
+class RunRecord{
+    id
+    instanceId
+    startRunTime
+    executeTime
+    gmtCreate
+    gmtModified
+    log
+}
+enum Reader{
+    ODPS_READER
+}
+enum Writer{
+    MYSQL_WRITER
+}
+enum Transformer{
+    dx_substr
+    dx_replace
+}
+
+Space --> DataSource
+DataSource -> BackflowConfig
+BackflowConfig -> RunInstance
+RunInstance --> RunRecord
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+[*] --> A
+
+state A {
+  [*] -> X
+  X -> B : f
+}
+
+state B {
+  [*] --> C
+  C --> D : x
+  D --> C : y
+  D --> C : z
+
+  state C {
+     R -> S: t
+  }
+
+}
+
+state E {
+   F -> G
+   B -> E
+
+}
+
+
+@enduml
